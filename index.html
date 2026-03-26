@@ -60,19 +60,25 @@
         .btn-stripe { background-color: #2ecc71; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; margin: 5px; }
 
         /* VITRINE */
-        .vitrine { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 25px; width: 95%; max-width: 1800px; 
-            margin: 40px auto; 
-        }
-        
-        .product-card {
-            background-color: #F5F5DC !important; border: 3px solid #331f10 !important;
-            border-radius: 15px !important; padding: 20px !important;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.2) !important; text-align: center;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
+        .vitrine {
+    display: grid !important;
+    /* Sur PC : ça fera 4 colonnes. Sur téléphone : ça passera à 1 ou 2 tout seul ! */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 15px !important;
+    padding: 15px !important;
+    width: 100% !important;
+             }
+
+.product-card {
+    width: 100% !important;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+box-sizing: border-box !important; 
+      }
+
+
 
         .product-card img {
             width: 100% !important; height: 350px !important; 
@@ -85,21 +91,7 @@
         /* RESPONSIVE */
         /* 1. Sur ordinateur (Grand écran) : On ajuste pour que ce soit parfait */
 @media (min-width: 1025px) {
-    .vitrine {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important; 
-        gap: 20px !important;
-        width: 95% !important;
-        max-width: 1600px !important; /* On resserre un peu le site */
-        margin: 40px auto !important;
-    }
-
-    .product-card img {
-        height: 400px !important; /* UN CHOUILLA PLUS PETIT : 400px au lieu de 500px */
-        width: 100% !important;
-        object-fit: cover !important;
-        border-radius: 10px !important;
-    }
+    
 
     .product-card {
         min-width: 280px !important; /* Fiches moins larges pour mieux tenir à l'écran */
