@@ -1,0 +1,73 @@
+/* --- DESIGN NANOUCHKA NANOUCHKA --- */
+:root {
+    --turquoise: #40a9b3;
+    --cuir-fonce: #4a3728;
+    --cuir-clair: #815c44;
+    --fond-creme: #fdfaf7;
+    --blanc: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0; padding: 0;
+    background-color: var(--fond-creme);
+    color: var(--cuir-fonce);
+}
+
+header {
+    background-color: #40a9b3;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 8px solid #331f10; margin:0
+width: 100%
+box-sizing: border-box;
+}
+
+.brand-name {
+    font-size: 3rem; font-weight: bold; color: #ffffff; display: block;
+letter-spacing: 3px
+}
+
+.brand-sub {
+    color:#f5ece0; font-style: italic;
+font-size:1.1rem;
+}
+
+nav { margin-top: 15px; }
+nav a { text-decoration: none; color: var(--cuir-fonce); margin: 0 10px; font-weight: 600; }
+
+.filter-container { padding: 20px; text-align: center; }
+.filter-btn {
+    border: 1.5px solid var(--turquoise); background: white;
+    padding: 8px 15px; border-radius: 20px; cursor: pointer; margin: 5px;
+}
+.filter-btn.active { background: var(--turquoise); color: white; }
+
+.product-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; padding: 20px;
+}
+
+.product-card {
+    background: white; border-radius: 10px; padding: 15px; text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; }
+
+.add-to-cart {
+    background: var(--turquoise); color: white; border: none;
+    padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; margin-top: 10px;
+}
+
+/* LE PANIER */
+.cart-sidebar {
+    position: fixed; right: -400px; top: 0; width: 350px; height: 100%;
+    background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 2000; transition: 0.4s; padding: 20px;
+}
+.cart-sidebar.open { right: 0; }
+#cart-overlay.active {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1999;
+}
