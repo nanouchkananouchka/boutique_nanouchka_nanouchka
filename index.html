@@ -106,7 +106,19 @@
     }
 }
 
- 
+ /* Cette ligne dit : "Si l'écran est petit (téléphone)" */
+@media (max-width: 768px) {
+    .vitrine {
+        grid-template-columns: repeat(2, 1fr) !important; /* On met 2 colonnes au lieu de 4 */
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+
+    .product-card img {
+        height: 200px !important; /* On réduit la hauteur de la photo pour que ce soit joli */
+    }
+}
+
    </style>
 </head>
 <body>
