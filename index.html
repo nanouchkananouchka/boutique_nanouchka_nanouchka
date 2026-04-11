@@ -1262,6 +1262,116 @@
 </div>
 
 
+    <!-- SACS -->
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac1.jpg" alt="Mass">
+ 
+        <h3>Sac Mass</h3>
+ 
+       <p class="description-produit">
+        En cuir d'agneau noir doublure sinthétique rouge hauteur 16 cm largeur 19 cm bandoullière et montage argenté 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 20,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Mass', 20, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac2.jpg" alt="Sablier">
+ 
+        <h3>Sac Sablier</h3>
+ 
+       <p class="description-produit">
+        En cuir d'agneau noir +gris doublure sinthétique rouge hauteur 18 cm largeur 16 cm profondeur 4 cm bandoullière couleur  bronze  
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 25,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Sablier', 25, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac3.jpg" alt="Jake">
+ 
+        <h3>Sac Jake</h3>
+ 
+       <p class="description-produit">
+        En simili cuir python noir + bleu hauteur 18 cm largeur 13 cm  profondeur 5 cm bandoullière couleur bronze  
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 15,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Jake', 15, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac4.jpg" alt="Petite besace">
+ 
+        <h3>Sac Petite Besace</h3>
+ 
+       <p class="description-produit">
+       en cuir de vache crème + kaki hauteur 13 cm largeur 16 cm profondeur bandoullière couleur gun 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 25,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Petite Besace', 25, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac5.jpg" alt="Sac Python ">
+ 
+        <h3>Sac Python</h3>
+ 
+       <p class="description-produit">
+       en simili cuir python bleu nuit doublure sinthétique  hauteur 20 cm largeur 20 cm profndeur 5 cm type sac à dos peut etre monté en bandoulière 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 30,00 €</p>
+ 
+     <button class="btn-achat" onclick="demanderPerso('NOM DU BIJOU')" style="background-color: #d35400; color: white;">
+    VENDU - Faire le même sur mesure ? ✨
+</button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac6.jpg" alt="Sac Néti">
+ 
+        <h3>Sac Néti</h3>
+ 
+       <p class="description-produit">
+       en cuir d'agneau bleu ciel doublure en coton bleu ciel hauteur 20 cm largeur 20 cm profndeur 5 cm  avec poche à zip à l'intérieur et une petite à pression sur le devant type sac à dos peut etre monté en bandoulière
+
+           
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 50,00 €</p>
+ 
+     <button class="btn-achat" onclick="demanderPerso('NOM DU BIJOU')" style="background-color: #d35400; color: white;">
+    VENDU - Faire le même sur mesure ? ✨
+</button>
+</div>
 
 
 
@@ -1358,6 +1468,11 @@
         bouton.classList.toggle('active');
         bouton.textContent = bouton.classList.contains('active') ? "❤️" : "♡";
     }
+    function demanderPerso(nomProduit) {
+    let msg = "Bonjour Nanouchka ! Je viens de voir votre création '" + nomProduit + "' qui est vendue. Serait-il possible d'en créer une similaire pour moi ? ✨";
+    window.open("https://wa.me/33671923588?text=" + encodeURIComponent(msg), "_blank");
+}
+
 </script>
 
 </body>
