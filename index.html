@@ -1,16 +1,1874 @@
+n <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+   
+    <link rel="apple-touch-icon" href="logo1.png">
+<link rel="icon" type="image/png" href="logo1.png">
 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Nanouchka Nanouchka">
 
-
-
-
- 
-
-  
-     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanouchka Nanouchka - Boutique Artisanale</title>
+    <link rel="icon" type="image/png" href="logo1.png">
+    <link rel="shortcut icon"href="logo1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #a0522d; margin: 0; padding: 0; font-family: sans-serif; color: white; }
       
+        header {
+            background-color: #48d1cc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 8px solid #331f10;
+        }
 
+        .brand-name { font-family: 'Playball', cursive; font-size: 3.5em; color: white; margin: 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .gros-logo { width: 100%; max-width: 400px; height: auto; border-radius: 20px; border: 4px solid white; margin: 10px 0; }
+        .logos-secondaires { display: flex; justify-content: center; gap: 15px; margin-top: 10px; flex-wrap: wrap; }
+        .mini-logo { width: 150px; height: 110px; object-fit: cover; border-radius: 10px; border: 3px solid white; }
+
+        .panier-resume { background-color: #331f10; color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid white; }
+      
+        .btn-filtre { background-color: #331f10; color: white; border: 1px solid white; padding: 8px 15px; border-radius: 15px; margin: 5px; cursor: pointer; font-weight: bold; }
+      
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #c19a6b;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 3px solid #331f10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .product-card img { width: 100%; height: auto; max-height: 350px; object-fit: contain; border-radius: 8px; border: 2px solid white;rbga(255,255,255,0.05) }
+        
+        .product-card h3 { font-family: 'Playball', cursive; font-size: 1.4em; margin: 10px 0; color: #331f10; }
+        .description-produit { font-size: 0.85em; color: black; font-style: italic; min-height: 70px; margin-bottom: 10px; line-height: 1.2; }
+        .prix { font-weight: bold; font-size: 1.3em; margin: 10px 0; color: white; text-shadow: 1px 1px 1px black; }
+      
+        .btn-achat { background-color: #331f10; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-achat:hover { background-color: #4a2d18; }
+      
+        .btn-favori {
+            position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.8); border: none;
+            font-size: 1.5em; cursor: pointer; width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s; color: #331f10; z-index: 5;
+        }
+        .btn-favori.active { color: #e74c3c; transform: scale(1.1); }
+
+        footer { background-color: #331f10; padding: 40px 20px; text-align: center; border-top: 8px solid #48d1cc; margin-top: 50px; display: flex; flex-direction: column; align-items: center; }
+
+        @media (max-width: 1100px) { .vitrine { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .vitrine { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="brand-name">Nanouchka Nanouchka</h1>
+    <img src="logo1.png" class="gros-logo" alt="Logo Principal">
+    <div class="logos-secondaires">
+        <img src="logo2.png" class="mini-logo" alt="Logo 2">
+        <img src="logo3.png" class="mini-logo" alt="Logo 3">
+        <img src="logo4.jpg" class="mini-logo" alt="Logo 4">
+    </div>
+    <p style="font-family: 'Playball', cursive; font-size: 1.5em; color: #331f10;">Artisanat Cuir & autres fait mains avec amour</p>
+
+    <section style="background-color: rgba(255,255,255,0.1); padding: 30px 20px; text-align: center; border-bottom: 3px solid #331f10; margin-bottom: 20px;">
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            
+            <img src="nous.jpeg" alt="L'équipe Nanouchka" style="width: 300px; height: auto; border-radius: 20% ; border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+            
+            <h2 style="font-family: 'Playball', cursive; font-size: 2.2em; color: white; margin-top: 10px;">Derrière Nanouchka Nanouchka</h2>
+            <p style="font-size: 1em; color: black; font-style: italic; background: rgba(255,255,255,0.7); padding: 10px 15px; border-radius: 10px; max-width: 600px;">
+                "Nous créons chaque pièce à la main avec passion, directement dans notre atelier d'Altkirch. Chaque création en cuir raconte une histoire."
+            </p>
+        </div>
+    </section>
+
+</header>
+
+<div class="panier-resume">
+    <p>🛒 <span id="compteur">0</span> articles | Total : <strong><span id="total">0.00</span> €</strong></p>
   
+    <div style="margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; display: inline-block;">
+        <span style="font-size: 0.9em; margin-right: 10px;">📦 Livraison :</span>
+        <label><input type="radio" name="livraison" value="2.50" onclick="majAffichage()"> Suivie (2.50€)</label>
+        <label style="margin-left:10px;"><input type="radio" name="livraison" value="4.50" onclick="majAffichage()"> Mondial Relay (4.50€)</label>
+        <label style="margin-left:10px;"><input type="radio" name="livraison" value="0.00" onclick="majAffichage()" checked> Retrait Altkirch (Gratuit)</label>
+    </div>
+    <br>
+    <button onclick="envoyerWhatsApp()" style="background-color:#25D366; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-weight:bold;">Commander via WhatsApp 📱</button>
+    <button onclick="window.open('https://buy.stripe.com/9B614na8S3ri4wc5A3aVa00', '_blank')" style="background-color:#635bff; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-weight:bold; margin-left:5px;">Payer par Carte 💳</button>
+    <button onclick="viderPanier()" style="background-color:#e74c3c; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-weight:bold; margin-left:5px;">Vider 🗑️</button>
+</div>
+
+<div style="background-color: #48d1cc; padding: 10px; text-align: center; border-bottom: 4px solid #331f10;">
+    <button class="btn-filtre" onclick="filtrer('tous')">Tout voir</button>
+    <button class="btn-filtre" onclick="filtrer('bijoux')">Bijoux</button>
+    <button class="btn-filtre" onclick="filtrer('sacs')">Sacs</button>
+    <button class="btn-filtre" onclick="filtrer('rockeur')">Cœur de Rockeur</button>
+    <button class="btn-filtre" onclick="filtrer('boucles')">Boucles d'Oreilles</button>
+        <button class="btn-filtre" onclick="filtrer('parrures')">Parrures</button>
+    <button class="btn-filtre" onclick="filtrer('accessoires')">Acccessoires</button>
+
+        <br>
+    <button class="btn-filtre" style="background-color: #331f10; font-size: 0.8em;" onclick="filtrer('colliers')">Colliers</button>
+    <button class="btn-filtre" style="background-color: #331f10; font-size: 0.8em;" onclick="filtrer('bracelets')">Bracelets</button>
+</div>
+
+<main class="vitrine">
+    <!-- COLLIERS -->
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier1.jpg" alt="Collier Artisanal 1">
+        <h3>Collier Artisanal 1</h3>
+        <p class="description-produit">Pendentif simili cuir bleu, coeur résine + fimo sur cuir d'agneau bleu ciel.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Artisanal 1', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier2.jpg" alt="Collier 2">
+        <h3>Collier 2</h3>
+        <p class="description-produit">Pendentif en pâte fimo coeur en résine + fimo sur cuir d'agneau bleu ciel.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier 2', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier3.jpg" alt="Collier 3">
+        <h3>Collier coeur 3</h3>
+        <p class="description-produit">Pendentif en pâte fimo cœur en résine + fimo sur cuir d'agneau bleu ciel.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier 3', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier4.jpg" alt="Collier 4">
+        <h3>Collier Artisanal 4</h3>
+        <p class="description-produit">Pendentif en pâte fimo cœur en résine + fimo sur cuir rose foncé cordon bleu.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier 4', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier5.jpg" alt="Collier 5">
+        <h3>Collier Multicoeurs</h3>
+        <p class="description-produit">Pendentif pâte fimo sur cuir rose foncé avec petits cœurs en cuir.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Multicoeur', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier6.jpg" alt="Collier 6">
+        <h3>Collier Cœur 6</h3>
+        <p class="description-produit">Pendentif en pâte fimo coeur en résine sur cuir rose pâle.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Cœur 6', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier7.jpg" alt="Collier 7">
+        <h3>Collier Cœur 7</h3>
+        <p class="description-produit">Pendentif en pâte fimo coeur en résine sur cuir rose foncé + perle fimo.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier cœur 7', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier8.jpg" alt="Collier 8">
+        <h3>Collier Étoile Filante</h3>
+        <p class="description-produit">Pendentif étoile filante en pâte fimo sur cuir rose foncé montage doré.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Etoile Filante 8', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier9.jpg" alt="Collier 9">
+        <h3>Collier Manala 9</h3>
+        <p class="description-produit">Pendentif manala en pâte fimo sur cuir rose foncé + perles en fimo.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Manala 9', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier11.jpg" alt="Collier 11">
+        <h3>Collier Cœur Serpent</h3>
+        <p class="description-produit">Cuir de serpent marron insert coeur en pâte fimo montage doré.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Coeur de Serpent', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier12.jpg" alt="Collier 12">
+        <h3>Collier Amour</h3>
+        <p class="description-produit">Pendentif coeur en simili cuir rouge fourré cordon cuir noir.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Amour 12', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux colliers">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="collier13.jpg" alt="Collier 13">
+        <h3>Collier Love</h3>
+        <p class="description-produit">Pendentif coeur simili cuir rouge fourré cordon cuir violet.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Collier Love', 5, this)">Ajouter au panier</button>
+    </div>
+    <!-- PARRURES -->
+
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure1.jpg" alt="Parrure 1">
+        <h3>Parrure 1</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir rouge montage doré cordon cuir noir réglable de 37 à 74 cm.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 1', 10, this)">Ajouter au panier</button>
+    </div>
+
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure2.jpg" alt="Parrure 2">
+        <h3>Parrure 2</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 2', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure3.jpg" alt="Parrure 3">
+        <h3>Parrure 3</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 3', 10, this)">Ajouter au panier</button>
+    </div>
+
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure4.jpg" alt="Parrure 4">
+        <h3>Parrure 4</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 4', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure5.jpg" alt="Parrure 5">
+        <h3>Parrure 5</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 5', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure6.jpg" alt="Parrure 6">
+        <h3>Parrure 6</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 6', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure7.jpg" alt="Parrure 7">
+        <h3>Parrure 7</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir bleu montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 7', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure8.jpg" alt="Parrure 8">
+        <h3>Parrure 8</h3>
+        <p class="description-produit">
+            Pendentif coeur fimo sur simili cuir violet montage doré cordon cuir noir réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 8', 10, this)">Ajouter au panier</button>
+    </div>
+
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure9.jpg" alt="Parrure 9">
+        <h3>Parrure 9</h3>
+        <p class="description-produit">
+            Pendentif manala fimo sur cuir vert montage doré cordon cuir violet réglable longueur max 74 cm.</p>
+        <p class="prix">15,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 9', 15, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure10.jpg" alt="Parrure 10">
+        <h3>Parrure 10</h3>
+        <p class="description-produit">
+            Pendentif manala fimo sur cuir de veau noir pailleté montage acier inoxidable cordon cuir noir réglable.</p>
+        <p class="prix">20,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 10', 20, this)">Ajouter au panier</button>
+    </div>
+
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure11.jpg" alt="Parrure 11">
+        <h3>Parrure 11</h3>
+        <p class="description-produit">
+            Pendentif coeur en acier inoxidable sur coeur en cuir d'agneau  bleu ciel +robe en acier inoxidable pour le collier montage acier inoxidable cordon cuir bleu réglable.</p>
+        <p class="prix">20,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 11', 20, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parure12.jpg" alt="Parrure 12">
+        <h3>Parrure 12</h3>
+        <p class="description-produit">
+            Pendentif manala fimo sur coeur en cuir de veau rouge + coeur en acier inoxidable montage acier inoxidable cordon cuir violet .</p>
+        <p class="prix">20,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 12', 20, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure13.jpg" alt="Parrure 13">
+        <h3>Parrure 13</h3>
+        <p class="description-produit">
+            Pendentif manala fimo dans cuir de veau  bleu montage acier inoxidable cordon cuir bleu réglable.</p>
+        <p class="prix">20,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 20', 10, this)">Ajouter au panier</button>
+    </div>
+<div class="product-card bijoux parrures">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="Parrure14.jpg" alt="Parrure 14">
+        <h3>Parrure 14</h3>
+        <p class="description-produit">
+            Pendentif manala fimo sur cuir de veau noir pailleté montage acier inoxidable cordon cuir violet réglable.</p>
+        <p class="prix">20,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Parrure 14', 20, this)">Ajouter au panier</button>
+    </div>
+
+ <!-- BOUCLES D'OREILLES -->
+
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles1.jpg"alt="Boucles d'Oreilles 1">
+<h3>Boucles d'Oreilles Artisanale 1</h3>
+<p class="description-produit">
+    manala en pâte fimo sur coeur en cuir de veau rouge  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 1', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles2.jpg"alt="Boucles d'Oreilles 2">
+<h3>Boucles d'Oreilles Artisanale 2</h3>
+<p class="description-produit">
+    manala en pâte fimo sur coeur en cuir de veau rouge  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 2', 10, this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles3.jpg"alt="Boucles d'Oreilles 3">
+<h3>Boucles d'Oreilles Artisanale 3</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau rouge  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 3', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles4.jpg"alt="Boucles d'Oreilles 4">
+<h3>Boucles d'Oreilles Artisanale 4</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau rouge  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 4', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles5.jpg"alt="Boucles d'Oreilles 5">
+<h3>Boucles d'Oreilles Artisanale 5</h3>
+<p class="description-produit">
+ coquillage  artificiel dans simili cuir noir montage en acier inoxidable en <p>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 5', 5, this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles6.jpg"alt="Boucles d'Oreilles 6">
+<h3>Boucles d'Oreilles Artisanale 6</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau noir pailleté montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 6', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles7.jpg"alt="Boucles d'Oreilles 7">
+<h3>Boucles d'Oreilles Artisanale 7</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau noir pailleté montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 7', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles8.jpg"alt="Boucles d'Oreilles 8">
+<h3>Boucles d'Oreilles Artisanale 8</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau noir pailleté montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 8', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles9.jpg"alt="Boucles d'Oreilles 9">
+<h3>Boucles d'Oreilles Artisanale 9</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau noir pailleté montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 9', 10, this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles10.jpg"alt="Boucles d'Oreilles 10">
+<h3>Boucles d'Oreilles Artisanale 6</h3>
+<p class="description-produit">
+ manala en pâte fimo dans cuir de veau noir pailleté montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 10', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles11.jpg"alt="Boucles d'Oreilles 11">
+<h3>Boucles d'Oreilles Artisanale 11</h3>
+<p class="description-produit">
+ dans cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 11', 10, this)">Ajouter au panier</button>
+</div>
+
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles12.jpg"alt="Boucles d'Oreilles 12">
+<h3>Boucles d'Oreilles Artisanale 12</h3>
+<p class="description-produit">
+ dans cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 12', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles11.jpg"alt="Boucles d'Oreilles 13">
+<h3>Boucles d'Oreilles Artisanale 13</h3>
+<p class="description-produit">
+ dans cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 13', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles14.jpg"alt="Boucles d'Oreilles 14">
+<h3>Boucles d'Oreilles Artisanale 14</h3>
+<p class="description-produit">
+ dans  en cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 14', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles15.jpg"alt="Boucles d'Oreilles 15">
+<h3>Boucles d'Oreilles Artisanale 15</h3>
+<p class="description-produit">
+ dans  en cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 15', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles16.jpg"alt="Boucles d'Oreilles 16">
+<h3>Boucles d'Oreilles Artisanale 16</h3>
+<p class="description-produit">
+ dans  en cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 16', 10, this)">Ajouter au panier</button>
+</div>
+    <div class="product-card bijoux boucles d'oreilles ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="boucles17.jpg"alt="Boucles d'Oreilles 17">
+<h3>Boucles d'Oreilles Artisanale 17</h3>
+<p class="description-produit">
+ dans  en cuir  montage en acier inoxidable en <p>
+<p class="prix">10,00 €</p>
+<button class="btn-achat"  onclick="ajouterAuPanier('Boucles d'Oreilles 17', 10, this)">Ajouter au panier</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- BRACELETS -->
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet1.jpg" alt="Bracelet 1">
+        <h3>Bracelet Fifi 1</h3>
+        <p class="description-produit">Fifi en simili cuir imitation python bleu nuit fermoir aimanté.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Fifi 1', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet2.jpg" alt="Bracelet 2">
+        <h3>Bracelet Fifi 2</h3>
+        <p class="description-produit">Fifi en cuir d'agneau noir tranche bleu fermoir aimanté.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Fifi 2', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet3.jpg" alt="Bracelet 3">
+        <h3>Bracelet Fifi 3</h3>
+        <p class="description-produit">Fifi en cuir d'agneau noir tranche marron fermoir aimanté.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Fifi 3', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet4.jpg" alt="Bracelet 4">
+        <h3>Bracelet Kéry 4</h3>
+        <p class="description-produit">Kéry en simili cuir violet tranche bleu fermoir aimanté.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Kéry 4', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet5.jpg" alt="Bracelet 5">
+        <h3>Bracelet Yeimy 5</h3>
+        <p class="description-produit">Yeimy en cuir d'agneau gris lacet violet réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Yeimy 5', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet6.jpg" alt="Bracelet 6">
+        <h3>Bracelet Irma 6</h3>
+        <p class="description-produit">Irma en simili cuir python noir lacets bleu + rose réglables.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Irma 6', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet7.jpg" alt="Bracelet 7">
+        <h3>Bracelet Alma 7</h3>
+        <p class="description-produit">Alma en cuir de serpent rose lacet violet réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Alma 7', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet8.jpg" alt="Bracelet 8">
+        <h3>Bracelet 8</h3>
+        <p class="description-produit">Simili cuir python bleu nuit lacets rose + bleu réglables.</p>
+        <p class="prix">5,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet 8', 5, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet9.jpg" alt="Bracelet 9">
+        <h3>Bracelet Ligia 9</h3>
+        <p class="description-produit">Ligia en cuir de vache noir lacet bleu réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Ligia 9', 10, this)">Ajouter au panier</button>
+    </div>
+
+    <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+        <img src="bracelet10.jpg" alt="Bracelet 10">
+        <h3>Bracelet Fifi2 10</h3>
+        <p class="description-produit">Fifi2 en cuir de serpent marron et rose lacet violet réglable.</p>
+        <p class="prix">10,00 €</p>
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet Fifi2 10', 10, this)">Ajouter au panier</button>
+    </div>
+
+   
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf6.jpg"alt="Bracelet Fantaisie 6">
+<h3>Bracelet Fantaisie 6</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 6',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf7.jpg"alt="Bracelet Fantaisie 7">
+<h3>Bracelet Fantaisie 7</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 7',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf8.jpg"alt="Bracelet Fantaisie 8">
+<h3>Bracelet Fantaisie 8</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclik="ajouterAuPanier('Bracelet Fantaisie 8',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf9.jpg"alt="Bracelet Fantaisie 9" >
+<h3>Bracelet Fantaisie 9</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 9',5,this)">ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf10.jpg"alt="Bracelet Fantaisie 10">
+<h3>Bracelet Fantaisie 10</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 10',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf11.jpg"alt="Bracelet Fantaisie 11">
+<h3>Bracelet Fantaisie 11</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 11',5,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf13.jpg"alt="Bracelet Fantaisie 13">
+<h3>Bracelet Fantaisie 13</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 13',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf14.jpg"alt="Bracelet Fantaisie 14">
+<h3>Bracelet Fantaisie 14</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 14',5,this)"> Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf15.jpg"alt="Bracelet Fantaisie 15">
+<h3>Bracelet Fantaisie 15</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 2',5,this)"> Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf16.jpg"alt="Bracelet Fantaisie 16">
+<h3>Bracelet Fantaisie 16</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 16',5,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf17.jpg"alt="Bracelet Fantaisie 17" >
+<h3>Bracelet Fantaisie 17</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 17',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf18.jpg"alt="Bracelet Fantaisie 18" >
+<h3>Bracelet Fantaisie 18</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 18',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf19.jpg"alt="Bracelet Fantaisie 19" >
+<h3>Bracelet Fantaisie 19</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 19',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf20.jpg"alt="Bracelet Fantaisie 20" >
+<h3>Bracelet Fantaisie 20</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 20',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf21.jpg"alt="Bracelet Fantaisie 21" >
+<h3>Bracelet Fantaisie 21</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"ajouterAuPanier('Bracelet Fantaisie 21',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bronclick="acelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf22.jpg"alt="Bracelet Fantaisie 22" >
+<h3>Bracelet Fantaisie 22</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 22',5,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf24.jpg"alt="Bracelet Fantaisie 24" >
+<h3>Bracelet Fantaisie 24</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 24',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf25.jpg"alt="Bracelet Fantaisie 25" >
+<h3>Bracelet Fantaisie 25</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 25',5,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="braceletf26.jpg"alt="Bracelet Fantaisie 26" >
+<h3>Bracelet Fantaisie 26</h3>
+<p class="prix">5,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Bracelet Fantaisie 26',5,this)">Ajouter au panier</button>
+</div>
+
+
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="cravater1.jpg"alt="Cravate Cœur 1">
+<h3>Cravate Cœur 1</h3>
+<p class= description-produit">
+<p class="prix">30,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Cravate Cœur 1',30,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="noeud1.jpg"alt="Nœud cœur 1">
+<h3>Noeud Cœur 1</h3>
+<p class="prix">15,00 €</p>
+<p class= description-produit>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 1',15,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="noeud2.jpg"alt="Nœud cœur 2">
+<h3>Noeud Artisanale</h3>
+<p class= description-produit>
+<p class="prix">15,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 2',15,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="noeud3.jpg"alt="Nœud cœur 3">
+<h3>Noeud Coeur</h3>
+<p class= description-produit>
+<p class="prix">15,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 3',15,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+
+<img src="noeud4.jpg"alt="Nœud Cœur 4">
+<h3>Noeud Coeur</h3>
+<p class= description-produit>
+<p class="prix">15,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 4',15,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+    <img src="noeud5.jpg">
+<h3>Noeud Artisanale</h3>
+<p class= description-produit">
+<p class="prix">15,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 5',15,this)">Ajouter au panier</button>
+</div>
+
+<div class="product-card coeur de rockeur  cravate&noeud ">
+<button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+<img src="noeud6.jpg">
+<h3>Noeud Artisanale</h3>
+<p class= description-produit">
+<p class="prix">15,00 €</p>
+<button class="btn-achat"onclick="ajouterAuPanier('Noeud 6',15,this)">Ajouter au panier</button>
+</div>
+<div class="product-card bijoux bracelets">
+    <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+    <img src="braceletp1.jpg" alt="bracelet fluorite 1">
+    <h3>Bracelet fluorite 1</h3>
+    <p class="description-produit">fluorite naturelle fil élastique 18 cm </p>
+    <p class="prix">10,00 €</p>
+    <button class="btn-achat" onclick="ajouterAuPanier('bracelet fluorite 1', 10, this)">
+        Ajouter au panier
+    </button>
+</div>
+
+
+<div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
  
+        <img src="braceletp2.jpg" alt="Bracelet fluorite 2">
+ 
+        <h3>Bracelet fluorite 2</h3>
+ 
+        <p class="description-produit">
+               fluorite naturelle fil élastique 18 cm    </p>
+ 
+        <p class="prix">7,50 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fluorite 2', 7,5, this)">
+            Ajouter au panier
+        </button>
+    </div>
+
+ <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+        <img src="braceletp3.jpg" alt="bracelet fluorite 3">
+ 
+        <h3>Bracelet fluorite 3</h3>
+ 
+        <p class="description-produit">
+        fluorite naturelle avec 2 œil de tigre fil élastique 18 cm  </p>
+ 
+        <p class="prix">10,00 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fluorite 3', 10, this)">
+            Ajouter au panier
+        </button>
+    </div>
+
+ <div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+        <img src="oeildetigre1.jpg" alt="bracelet œil de tigre 1">
+ 
+        <h3>Bracelet œil de tigre 1</h3>
+ 
+        <p class="description-produit">
+            bracelet en œil de tigre sur élastique 18 cm        </p>
+ 
+        <p class="prix">30,00 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet œil de tigre 1', 30, this)">
+            Ajouter au panier
+        </button>
+    </div>
+
+<div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+        <img src="verre1.jpg" alt="bracelet verre 1 ">
+ 
+        <h3>Bracelet verre 1 </h3>
+ 
+        <p class="description-produit">
+           perles en verre  sur élastique 18 cm        </p>
+ 
+        <p class="prix">05,00 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 1', 5, this)">
+            Ajouter au panier
+        </button>
+    </div>
+<div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+        <img src="verre2.jpg" alt="bracelet verre 2">
+ 
+        <h3>Bracelet verre 2</h3>
+ 
+        <p class="description-produit">
+            perles en verre sur élastique 18 cm        </p>
+ 
+        <p class="prix">5,00 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 2', 5, this)">
+            Ajouter au panier
+        </button>
+    </div>
+<div class="product-card bijoux bracelets">
+        <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+        <img src="verre3.jpg" alt="bracelet verre 3">
+ 
+        <h3>Bracelet verre 3</h3>
+ 
+        <p class="description-produit">
+            perles en verre sur élastique 18 cm        </p>
+ 
+        <p class="prix">5,00 €</p>
+ 
+        <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 3', 5, this)">
+            Ajouter au panier
+        </button>
+    </div>
+
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori" onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre4.jpg" alt="bracelet verre 4">
+ 
+        <h3>Bracelet  verre 4</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm       </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 4', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre5.jpg" alt="bracelet verre 5">
+ 
+        <h3>Bracelet  verre 5</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 5', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre6.jpg" alt="bracelet verre 6">
+ 
+        <h3>Bracelet  verre 6</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 6', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre7.jpg" alt="bracelet verre 7">
+ 
+        <h3>Bracelet  verre 7</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 7', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre8.jpg" alt="bracelet pierre naturelle 8">
+ 
+        <h3>Bracelet  pierres naturelle 8</h3>
+ 
+       <p class="description-produit">
+          jade violet et améthyste sur élastique 18 cm </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierre naturelle 8', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre9.jpg" alt="bracelet verre 9">
+ 
+        <h3>Bracelet  verre 9</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 9', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre10.jpg" alt="bracelet verre 10">
+ 
+        <h3>Bracelet  verre 10</h3>
+ 
+       <p class="description-produit">
+           perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 10', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre11.jpg" alt="bracelet verre et pierres 11">
+ 
+        <h3>Bracelet  verre et pierres 11</h3>
+ 
+       <p class="description-produit">
+          oeil de tigre bleu vert paon et  perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre et pierres 11', 7,5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre12.jpg" alt="bracelet verre 12">
+ 
+        <h3>Bracelet  verre  12</h3>
+ 
+       <p class="description-produit">
+        perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre, 12', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre13.jpg" alt="bracelet verre et pierres 13">
+ 
+        <h3>Bracelet  verre et pierres 13</h3>
+ 
+       <p class="description-produit">
+          oeil de tigre et  perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre et pierres 13', 7,5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre14.jpg" alt="bracelet verre 14">
+ 
+        <h3>Bracelet  verre  14</h3>
+ 
+       <p class="description-produit">
+          perles de verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre 14', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+   <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="verre15.jpg" alt="bracelet verre et pierre naturelle 15">
+ 
+        <h3>Bracelet  verre et pierre naturelle  15</h3>
+ 
+       <p class="description-produit">
+          pierre naturelle et perle en verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet verre et pierre naturelle 15', 7,50 this)">
+            Ajouter au panier
+       </button>
+</div> 
+    <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre16.jpg" alt="bracelet pierres naturelle 16">
+ 
+        <h3>Bracelet  pierres naturelle  16</h3>
+ 
+       <p class="description-produit">
+          pierres naturelle jaspe de dragon sur élastique 18 cm </p>
+ 
+        <p class="prix"> 15,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierres naturelle 16', 15, this)">
+            Ajouter au panier
+       </button>
+</div>
+ <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre17.jpg" alt="bracelet pierres naturelle 17">
+ 
+        <h3>Bracelet  pierres naturelle  17</h3>
+ 
+       <p class="description-produit">
+          pierres naturelle jaspe de dragon sur élastique 18 cm </p>
+ 
+        <p class="prix"> 15,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierres naturelle 17', 15, this)">
+            Ajouter au panier
+       </button>
+</div>
+    <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre18.jpg" alt="bracelet pierres naturelle 18">
+ 
+        <h3>Bracelet  pierres naturelle  18</h3>
+ 
+       <p class="description-produit">
+          pierres naturelle oeil de faucon sur élastique 18 cm </p>
+ 
+        <p class="prix"> 20,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierres naturelle 18', 20, this)">
+            Ajouter au panier
+       </button>
+</div> 
+ <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre19.jpg" alt="bracelet pierres naturelle 19">
+ 
+        <h3>Bracelet  pierres naturelle  19</h3>
+ 
+       <p class="description-produit">
+          pierres naturelle oeil de faucon sur élastique 18 cm </p>
+ 
+        <p class="prix"> 20,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierres naturelle 19', 20, this)">
+            Ajouter au panier
+       </button>
+</div>
+     <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="fantaisie20.jpg" alt="bracelet fantaisie 20">
+ 
+        <h3>Bracelet  fantaisie  20</h3>
+ 
+       <p class="description-produit">
+         braceelet fantasie sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fantaisie 20' 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="fantaisie21.jpg" alt="bracelet fantaisie 21">
+ 
+        <h3>Bracelet  fantaisie  21</h3>
+ 
+       <p class="description-produit">
+         braceelet fantasie sur élastique 19 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fantaisie 21' 5, this)">
+            Ajouter au panier
+       </button>
+</di<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="fantaisie22.jpg" alt="bracelet fantaisie 22">
+ 
+        <h3>Bracelet  fantaisie  22</h3>
+ 
+       <p class="description-produit">
+         braceelet fantasie sur élastique 19 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fantaisie 22' 5, this)">
+            Ajouter au panier
+       </button>
+</div>v>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="fantaisie24.jpg" alt="bracelet fantaisie 24">
+ 
+        <h3>Bracelet  fantaisie  24</h3>
+ 
+       <p class="description-produit">
+         braceelet fantasie sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fantaisie 24' 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="fantaisie25.jpg" alt="bracelet fantaisie 25">
+ 
+        <h3>Bracelet  fantaisie  25</h3>
+ 
+       <p class="description-produit">
+         braceelet fantasie sur élastique 18 cm </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet fantaisie 25' 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre26.jpg" alt="bracelet perle et en verre 26">
+ 
+        <h3>Bracelet  pierre et perle en verre  26</h3>
+ 
+       <p class="description-produit">
+         braceelet pierre et perle en verre sur élastique 18 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierre et perle en verre 26' 7,50 this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre27.jpg" alt="bracelet perle en verre 27">
+ 
+        <h3>Bracelet  pierre et perle en verre  27</h3>
+ 
+       <p class="description-produit">
+         braceelet pierre et perle en verre sur élastique 16 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierre et perle en verre 27' 7,50 this)">
+            Ajouter au panier
+       </button>
+</div>
+    <div class="product-card bijoux bracelets">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="braceletpierre.jpg" alt="bracelet perle en verre 28">
+ 
+        <h3>Bracelet  pierre et perle en verre  28</h3>
+ 
+       <p class="description-produit">
+         braceelet pierre et perle en verre sur élastique 16 cm </p>
+ 
+        <p class="prix"> 7,50 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bracelet pierre et perle en verre 28' 7,50 this)">
+            Ajouter au panier
+       </button>
+</div>
+    
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="CLE1.jpg" alt="porte cle 1">
+ 
+        <h3>Porte cle 1</h3>
+ 
+       <p class="description-produit">
+          Coeur cuir de veau bleu insert coeur en fimo tranche bleu anneau argenté </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 1', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle2.jpg" alt="porte cle 2">
+ 
+        <h3>Porte cle 2</h3>
+ 
+       <p class="description-produit">
+          Coeurs en simili cuir rouge et bleu montage argenté </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 2', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="CLE3.jpg" alt="porte cle 3">
+ 
+        <h3>Porte cle 3</h3>
+ 
+       <p class="description-produit">
+         Manala inséré dans du cuir de veau noir montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 3', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="CLE4.jpg" alt="porte cle 4">
+ 
+        <h3>Porte cle 4</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau noir montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 4', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle5.jpg" alt="porte cle 5">
+ 
+        <h3>Porte cle 5</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 5', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle6.jpg" alt="porte cle 6">
+ 
+        <h3>Porte cle 6</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 6', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+   <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle7.jpg" alt="porte cle 7">
+ 
+        <h3>Porte cle 7</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 7', 10, this)">
+            Ajouter au panier
+       </button>
+</div> 
+    <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle8.jpg" alt="porte cle 8">
+ 
+        <h3>Porte cle 8</h3>
+ 
+       <p class="description-produit">
+        Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 8', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle9.jpg" alt="porte cle 9">
+ 
+        <h3>Porte cle 9</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 9', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+ <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle10.jpg" alt="porte cle 10">
+ 
+        <h3>Porte cle 10</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir de veau rouge montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 10', 10, this)">
+            Ajouter au panier
+       </button>
+</div>   
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle11.jpg" alt="porte cle 11">
+ 
+        <h3>Porte cle 11</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir d'agneau bleu ciel montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 11', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+    <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle12.jpg" alt="porte cle 12">
+ 
+        <h3>Porte cle 12</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir d'agneau bleu ciel montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 12', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle13.jpg" alt="porte cle 13">
+ 
+        <h3>Porte cle 13</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir d'agneau bleu ciel montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 13', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+  <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle14.jpg" alt="porte cle 14">
+ 
+        <h3>Porte cle 14</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir d'agneau bleu ciel montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 14', 10, this)">
+            Ajouter au panier
+       </button>
+</div> 
+    <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle15.jpg" alt="porte cle 15">
+ 
+        <h3>Porte cle 15</h3>
+ 
+       <p class="description-produit">
+         Manala au milieu de coeurs en cuir d'agneau bleu ciel montage acier inoxidable </p>
+ 
+        <p class="prix"> 10,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Porte cle 15', 10, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle16.jpg" alt="bijou de portabe 16">
+ 
+        <h3>Bijou de portable 16</h3>
+ 
+       <p class="description-produit">
+         Manala sur coeurs en cuir de veau rouge </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 16', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle17.jpg" alt="bijou de portabe 17">
+ 
+        <h3>Bijou de portable 17</h3>
+ 
+       <p class="description-produit">
+         Manala sur coeurs en cuir de veau rouge </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 17', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle18.jpg" alt="bijou de portabe 18">
+ 
+        <h3>Bijou de portable 18</h3>
+ 
+       <p class="description-produit">
+         Manala sur coeurs en cuir de veau rouge </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 18', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="Cle19.jpg" alt="bijou de portabe 19">
+ 
+        <h3>Bijou de portable 19</h3>
+ 
+       <p class="description-produit">
+         Manala sur coeurs en cuir de veau rouge </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 19', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle20.jpg" alt="bijou de portabe 20">
+ 
+        <h3>Bijou de portable 20</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 20', 5, this)">
+            Ajouter au panier
+       </button>
+</div><div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle21.jpg" alt="bijou de portabe 21">
+ 
+        <h3>Bijou de portable 21</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 21', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle22.jpg" alt="bijou de portabe 22">
+ 
+        <h3>Bijou de portable 22</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 22', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle23.jpg" alt="bijou de portabe 23">
+ 
+        <h3>Bijou de portable 23</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 23', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle24.jpg" alt="bijou de portabe 24">
+ 
+        <h3>Bijou de portable 24</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 24', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+   <div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle25.jpg" alt="bijou de portabe 25">
+ 
+        <h3>Bijou de portable 25</h3>
+ 
+       <p class="description-produit">
+         en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 25', 5, this)">
+            Ajouter au panier
+       </button>
+</div> 
+<div class="product-card accessoires">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="cle26.jpg" alt="bijou de portabe 26">
+ 
+        <h3>Bijou de portable 26</h3>
+ 
+       <p class="description-produit">
+        en perle fantaisie </p>
+ 
+        <p class="prix"> 5,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Bijou de portable 26', 5, this)">
+            Ajouter au panier
+       </button>
+</div>
+    <!-- SACS -->
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac1.jpg" alt="Mass">
+ 
+        <h3>Sac Mass</h3>
+ 
+       <p class="description-produit">
+        En cuir d'agneau noir doublure sinthétique rouge hauteur 16 cm largeur 19 cm bandoullière et montage argenté 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 20,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Mass', 20, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac2.jpg" alt="Sablier">
+ 
+        <h3>Sac Sablier</h3>
+ 
+       <p class="description-produit">
+        En cuir d'agneau noir +gris doublure sinthétique rouge hauteur 18 cm largeur 16 cm profondeur 4 cm bandoullière couleur  bronze  
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 25,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Sablier', 25, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac3.jpg" alt="Jake">
+ 
+        <h3>Sac Jake</h3>
+ 
+       <p class="description-produit">
+        En simili cuir python noir + bleu hauteur 18 cm largeur 13 cm  profondeur 5 cm bandoullière couleur bronze  
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 15,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Jake', 15, this)">
+            Ajouter au panier
+       </button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac4.jpg" alt="Petite besace">
+ 
+        <h3>Sac Petite Besace</h3>
+ 
+       <p class="description-produit">
+       en cuir de vache crème + kaki hauteur 13 cm largeur 16 cm profondeur bandoullière couleur gun 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 25,00 €</p>
+ 
+       <button class="btn-achat" onclick="ajouterAuPanier('Sac Petite Besace', 25, this)">
+            Ajouter au panier
+       </button>
+</div>
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac5.jpg" alt="Sac Python ">
+ 
+        <h3>Sac Python</h3>
+ 
+       <p class="description-produit">
+       en simili cuir python bleu nuit doublure sinthétique  hauteur 20 cm largeur 20 cm profndeur 5 cm type sac à dos peut etre monté en bandoulière 
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 30,00 €</p>
+ 
+     <button class="btn-achat" onclick="demanderPerso('NOM DU BIJOU')" style="background-color: #d35400; color: white;">
+    VENDU - Faire le même sur mesure ? ✨
+</button>
+</div>
+
+<div class="product-card sacs">
+       <button class="btn-favori"onclick="toggleFavori(this)">♡</button>
+ 
+       <img src="sac6.jpg" alt="Sac Néti">
+ 
+        <h3>Sac Néti</h3>
+ 
+       <p class="description-produit">
+       en cuir d'agneau bleu ciel doublure en coton bleu ciel hauteur 20 cm largeur 20 cm profndeur 5 cm  avec poche à zip à l'intérieur et une petite à pression sur le devant type sac à dos peut etre monté en bandoulière
+
+           
+       entièrement personnalisabe</p>
+ 
+        <p class="prix"> 50,00 €</p>
+ 
+     <button class="btn-achat" onclick="demanderPerso('NOM DU BIJOU')" style="background-color: #d35400; color: white;">
+    VENDU - Faire le même sur mesure ? ✨
+</button>
+</div>
+
 
 
 
@@ -115,4 +1973,19 @@
 
 </body>
 </html>
+
+
+
+
+
+ 
+
+  
+     
+      
+
+  
+ 
+
+
 
